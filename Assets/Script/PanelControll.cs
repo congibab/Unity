@@ -11,9 +11,10 @@ public class PanelControll : MonoBehaviour
     [SerializeField]
     private Image[] panelImages;
     // Start is called before the first frame update
+
     void Start()
     {
-    
+
         for(int i = 0; i < 16; i++)
         {
             var rectTransform = panelImages[i].GetComponent<RectTransform>();
