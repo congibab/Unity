@@ -5,25 +5,59 @@ using UnityEngine;
 
 public class usePlayer : MonoBehaviour
 {
+
+    float h;
+    float v;
+
     public Collider[] hitColliders;
     private bool CheckOverlap;
+    Rigidbody rb;
+
 
     [Range(0, 10)]
     public float Radius;
     [Range(0, 5)]
     public float Speed = 3.0f;
     // Start is called before the first frame update
+   
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        ObjectDetect();
-        FollowMove();
+        h = Input.GetAxisRaw("Horizontal");
+        v = Input.GetAxisRaw("Vertical");
     }
+
+    private void FixedUpdate()
+    {
+        PlayerMovement();
+    }
+
+    void PlayerMovement()
+    {
+        Vector3 Movement =transform.position  + new Vector3(h,0,v);
+        rb.MovePosition(Movement);
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private void ObjectDetect()
     {
